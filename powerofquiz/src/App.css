@@ -1,0 +1,19 @@
+.card{
+    transition: 0.3s !important;
+}
+.card:hover{
+  padding: 20px;
+  cursor: pointer;
+}
+.btn{
+    transition: 0.2s !important;
+    text-transform: capitalize !important;
+}
+.btn:hover{
+ 
+  background-color: rgb(16, 74, 16) !important;
+}
+.btn2:hover{
+  cursor: pointer;
+  background-color: red !important;
+}
