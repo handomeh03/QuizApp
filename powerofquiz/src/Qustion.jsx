@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate, useParams } from 'react-router-dom';
 import {  useContext, useState } from 'react';
-import { Info } from './Context';
+import { Info } from './Context/Context';
 export default function Qustion(){
   //for go to another page using functio
   let nav=useNavigate();
@@ -36,12 +36,12 @@ export default function Qustion(){
     setIsfinsh(false);
     setcuurentvale(0);
     setscore(0);
-    nav("/");
+    nav("/home");
   }
   function back(){
     if(cuurentvalue==0){
       setcuurentvale(0);
-      nav("/");
+      nav("/home");
     }
     else{
       setcuurentvale(cuurentvalue-1);

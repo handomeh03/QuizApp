@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const Info=createContext();
 export default function Provider({children}){
     let [info,setinfo]=useState([
@@ -61,8 +63,43 @@ export default function Provider({children}){
         },
 
     ]);
+
+    let [emails,setemail]=useState("");
+    let [passwords,setpassword]=useState("");
+
+    let[tokens,setToken]=useState("");
+
+    let navagate=useNavigate();
+
+    const log=async ()=>{
+        try{
+         const respone=await axios.post("https://reqres.in/api/login",{
+             email:emails,
+             password:passwords
+         });
+         setToken(respone.data.token);
+         navagate("/home",{replace:true});
+         
+        }catch(e){
+         alert("error in input please try again");
+        
+        }
+         
+     }
+    function handlechangeemail(emailss){
+        setemail(emailss);
+    }
+    function handlechangepassword(pass){
+        setpassword(pass);
+    }
+    function logout(){
+        setemail("");
+        setpassword("");
+        setToken("");
+        navagate("/");
+    }
     return(
-        <Info.Provider value={{info,setinfo}}>
+        <Info.Provider value={{logout,info,setinfo,log,handlechangeemail,handlechangepassword,passwords,emails}}>
             {children}
         </Info.Provider>
     );

@@ -17,3 +17,8 @@
   cursor: pointer;
   background-color: red !important;
 }
+.btn3:hover{
+  cursor: pointer;
+  background-color: rgb(33, 92, 110) !important;
+  color: white;
+}
